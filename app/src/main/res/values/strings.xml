@@ -3,4 +3,6 @@
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="payment_method">Payment Method</string>
     <string name="confirm">Confirm</string>
+    <string name="warning_permisstion">If you reject permission,you can not use this service \nPlease turn on permissions at [Setting] -> [Permission]</string>
+
 </resources>

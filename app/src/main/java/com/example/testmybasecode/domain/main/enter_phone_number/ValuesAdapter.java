@@ -17,6 +17,7 @@ public class ValuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private Context context;
     private List<String> values;
     private ValueAdapterListener listener;
+    private int itemSelected=-1;
 
     public ValuesAdapter(Context context,
                          List<String> values,
@@ -42,7 +43,11 @@ public class ValuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             String value = values.get(i);
             ValueViewHolder holder = (ValueViewHolder) viewHolder;
             holder.tvValue.setText(value);
-            Log.e("abc","value:"+value);
+            if(i==itemSelected){
+                holder.tvValue.setBackground(context.getDrawable( R.drawable.bg_grey_radius_border_click));
+            }else{
+                holder.tvValue.setBackground(context.getDrawable( R.drawable.bg_grey_radius_border));
+            }
         }
     }
 
@@ -64,6 +69,8 @@ public class ValuesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 public void onClick(View view) {
                     if(listener!=null){
                         listener.onValueClick(values.get(getAdapterPosition()));
+                        itemSelected= getAdapterPosition();
+                        notifyDataSetChanged();
                     }
                 }
             });
