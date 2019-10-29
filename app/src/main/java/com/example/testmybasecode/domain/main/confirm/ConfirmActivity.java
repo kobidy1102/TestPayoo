@@ -2,6 +2,7 @@ package com.example.testmybasecode.domain.main.confirm;
 
 import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.testmybasecode.MainApplication;
@@ -11,6 +12,7 @@ import com.example.testmybasecode.service.model.PaymentResponse;
 import com.hannesdorfmann.mosby3.mvp.MvpActivity;
 
 import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
@@ -32,6 +34,12 @@ public class ConfirmActivity extends MvpActivity<ConfirmView,ConfirmPresenter> i
     @AfterInject
     protected void afterInject() {
          application.getApplicationComponent().inject(this);
+    }
+
+    @AfterViews
+    protected void initViews(){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Click(R.id.activity_confirm_bt_pay)
@@ -64,5 +72,22 @@ public class ConfirmActivity extends MvpActivity<ConfirmView,ConfirmPresenter> i
     public void paymentFailed(Throwable throwable) {
         Toast.makeText(application, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
         throwable.printStackTrace();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_right_two, R.anim.slide_out_right);
+
     }
 }

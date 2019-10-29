@@ -52,5 +52,6 @@ public class EnterPhoneNumberActivity extends AppCompatActivity {
                 .phoneNumber("123")
                 .value("100")
                 .start();
+        overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_right_two);
     }
 }

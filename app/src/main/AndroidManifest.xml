@@ -13,12 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".domain.main.confirm.ConfirmActivity_" />
-        <activity android:name=".domain.main.payment.PaymentActivity_" />
-        <activity android:name=".domain.main.enter_phone_number.EnterPhoneNumberActivity_">
+        <activity android:name=".domain.main.confirm.ConfirmActivity_"
+            android:label="@string/confirm"/>
+
+        <activity android:name=".domain.main.payment.PaymentActivity_"
+            android:label="@string/payment_method"/>
+
+        <activity android:name=".domain.main.enter_phone_number.EnterPhoneNumberActivity_"
+            android:label="@string/enter_phone_number">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
