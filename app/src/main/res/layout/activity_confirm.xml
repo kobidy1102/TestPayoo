@@ -9,31 +9,66 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Số điện thoại:"/>
-   <TextView
-       android:id="@+id/activity_confirm_tv_phone_number"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="09090909"/>
+        android:layout_marginTop="15dp"
+        android:text="@string/phone_number"
+        android:textColor="@color/greyText"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/activity_confirm_tv_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Mệnh giá:"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/value"
+        android:textColor="@color/greyText"
+        android:textSize="16dp" />
     <TextView
         android:id="@+id/activity_confirm_tv_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100k"/>
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/payment_method"
+        android:textColor="@color/greyText"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/activity_confirm_tv_payment_method"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/total_amount"
+        android:textColor="@color/greyText"
+        android:textSize="16dp" />
+    <TextView
+        android:id="@+id/activity_confirm_tv_total_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="16dp" />
 
     <Button
         android:id="@+id/activity_confirm_bt_pay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:text="Thanh Toán"
+        android:background="@drawable/bg_blue_radius"
+        android:text="@string/pay"
         android:textAllCaps="false"
-        android:layout_gravity="center"/>
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
 </LinearLayout>

@@ -2,8 +2,6 @@ package com.example.testmybasecode;
 
 import android.annotation.SuppressLint;
 import android.app.Application;
-import android.util.Log;
-
 import com.example.testmybasecode.factory.ApplicationComponent;
 import com.example.testmybasecode.factory.ApplicationModule;
 import com.example.testmybasecode.factory.DaggerApplicationComponent;

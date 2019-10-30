@@ -8,21 +8,33 @@ import android.support.v4.app.DialogFragment;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.testmybasecode.R;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.ViewById;
+
+import java.util.Objects;
 
 @EFragment(R.layout.dialog_otp)
 public class OTPDialog extends DialogFragment {
 
-    private OTPListener otpListener;
+    @ViewById(R.id.dialog_otp_tv_otp_desciption)
+    protected TextView tvOtpDesciption;
+    @ViewById(R.id.dialog_otp_edt_otp)
+    protected EditText edtOtp;
 
-    public static OTPDialog newInstance(OTPListener otpListener) {
+    private OTPListener otpListener;
+    private String phoneNumber;
+
+    public static OTPDialog newInstance(String phoneNumber, OTPListener otpListener) {
         OTPDialog otpDialog = OTPDialog_.builder().build();
         otpDialog.setOTPListener(otpListener);
+        otpDialog.phoneNumber=phoneNumber;
         return otpDialog;
     }
 
@@ -36,15 +48,15 @@ public class OTPDialog extends DialogFragment {
         if (getDialog().getWindow() != null) {
             getDialog().getWindow().setGravity(Gravity.CENTER);
         }
+        tvOtpDesciption.setText(Objects.requireNonNull(getContext()).getResources().getString(R.string.otp_desciption,phoneNumber));
     }
 
-    @NonNull
     @Override
     public void onActivityCreated(Bundle arg0) {
         super.onActivityCreated(arg0);
-//        if (getDialog().getWindow() != null) {
-////            getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-////        }
+        if (getDialog().getWindow() != null) {
+            getDialog().getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        }
     }
 
     @NonNull
@@ -62,17 +74,14 @@ public class OTPDialog extends DialogFragment {
 
     @Override
     public void onResume() {
-        // Get existing layout params for the window
         Window window = getDialog().getWindow();
         if (window != null) {
             WindowManager.LayoutParams params = window.getAttributes();
             params.dimAmount = 0.85f;
-            // Assign window properties to fill the parent
             params.width = WindowManager.LayoutParams.MATCH_PARENT;
             params.height = WindowManager.LayoutParams.WRAP_CONTENT;
             window.setAttributes(params);
         }
-        // Call super onResume after sizing
         super.onResume();
     }
 
@@ -83,6 +92,11 @@ public class OTPDialog extends DialogFragment {
 
     @Click(R.id.dialog_otp_tv_ok)
     protected void onOkClick(){
+        if(edtOtp.getText().toString().isEmpty()){
+            Toast.makeText(getContext(), Objects.requireNonNull(getContext()).getResources().getString(R.string.otp_empty)
+                    , Toast.LENGTH_SHORT).show();
+            return;
+        }
         otpListener.onOkClick(this);
     }
 

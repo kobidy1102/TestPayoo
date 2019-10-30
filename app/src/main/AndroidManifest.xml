@@ -20,8 +20,7 @@
         <activity android:name=".domain.main.payment.PaymentActivity_"
             android:label="@string/payment_method"/>
 
-        <activity android:name=".domain.main.enter_phone_number.EnterPhoneNumberActivity_"
-            android:label="@string/enter_phone_number">
+        <activity android:name=".domain.main.enter_phone_number.EnterPhoneNumberActivity_">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

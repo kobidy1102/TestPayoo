@@ -1,8 +1,20 @@
 <resources>
-    <string name="app_name">TestMyBaseCode</string>
+    <string name="app_name">Test Payoo</string>
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="payment_method">Payment Method</string>
     <string name="confirm">Confirm</string>
     <string name="warning_permisstion">If you reject permission,you can not use this service \nPlease turn on permissions at [Setting] -> [Permission]</string>
-
+    <string name="select_value">Select Value</string>
+    <string name="continue_">Continue</string>
+    <string name="pay">Pay</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="value">Value</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="select_phone_number">Select Phone Number</string>
+    <string name="close">Close</string>
+    <string name="otp_code">OTP Code</string>
+    <string name="ok">OK</string>
+    <string name="payoo">Payoo</string>
+    <string name="otp_desciption">Please enter the OTP already sent to %1$s</string>
+    <string name="otp_empty">Please Enter OTP Code</string>
 </resources>

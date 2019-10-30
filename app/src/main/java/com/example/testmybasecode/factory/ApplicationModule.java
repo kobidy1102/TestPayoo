@@ -25,7 +25,7 @@ public class ApplicationModule {
     }
 
     @Provides
-    public Retrofit provideRetrofit() {
+    Retrofit provideRetrofit() {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();

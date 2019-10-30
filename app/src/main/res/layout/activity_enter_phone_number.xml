@@ -1,38 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:padding="15dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Nhập số điện thoại:"/>
+        android:layout_marginTop="30dp"
+        android:text="@string/enter_phone_number"
+        android:textColor="@color/greyText"
+        android:textSize="16dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <EditText
             android:id="@+id/activity_add_phone_number_edt_phone_number"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_height="wrap_content" />
+            android:backgroundTint="@color/grey"
+            android:imeOptions="actionDone"
+            android:inputType="number"
+            tools:ignore="TextFields" />
+
         <ImageView
             android:id="@+id/activity_add_phone_number_iv_contacts"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_launcher"/>
+            android:padding="5dp"
+            android:src="@drawable/ic_contacts" />
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Chọn mệnh giá:"/>
+        android:text="@string/select_value"
+        android:textColor="@color/greyText"
+        android:textSize="16dp" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/activity_add_phone_number_rcv_values"
         android:layout_width="wrap_content"
@@ -42,10 +55,13 @@
 
     <Button
         android:id="@+id/activity_add_phone_number_bt_continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
         android:layout_marginTop="50dp"
-        android:text="Tiếp Tục"
+        android:background="@drawable/bg_blue_radius"
+        android:text="@string/continue_"
         android:textAllCaps="false"
-        android:layout_gravity="center"/>
+        android:textColor="@android:color/white"
+        android:textSize="16dp" />
 </LinearLayout>

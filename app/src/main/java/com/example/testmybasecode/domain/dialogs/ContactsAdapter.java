@@ -1,15 +1,12 @@
 package com.example.testmybasecode.domain.dialogs;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.example.testmybasecode.R;
 import com.example.testmybasecode.service.model.Contact;
 
@@ -18,18 +15,15 @@ import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context context;
     private ContactsDialog contactsDialog;
     private List<Contact> contacts;
     private ContactsDialog.ContactsDialogListener listener;
 
 
-    public ContactsAdapter(Context context,
-                           ContactsDialog contactsDialog,
-                           List<Contact> contacts,
-                           ContactsDialog.ContactsDialogListener listener) {
-        this.context = context;
-        this.contactsDialog= contactsDialog;
+    ContactsAdapter(ContactsDialog contactsDialog,
+                    List<Contact> contacts,
+                    ContactsDialog.ContactsDialogListener listener) {
+        this.contactsDialog = contactsDialog;
         this.contacts = contacts;
         this.listener = listener;
 
@@ -64,16 +58,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         private ValueViewHolder(View itemView) {
             super(itemView);
-            tvName= itemView.findViewById(R.id.item_contact_tv_name);
-            tvPhoneNumber=itemView.findViewById(R.id.item_contact_tv_phoneNumber);
-            llRoot=itemView.findViewById(R.id.item_contact_ll_root);
+            tvName = itemView.findViewById(R.id.item_contact_tv_name);
+            tvPhoneNumber = itemView.findViewById(R.id.item_contact_tv_phoneNumber);
+            llRoot = itemView.findViewById(R.id.item_contact_ll_root);
 
-            llRoot.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if(listener!=null){
-                        listener.onContactClick(contactsDialog, contacts.get(getAdapterPosition()));
-                    }
+            llRoot.setOnClickListener(view -> {
+                if (listener != null) {
+                    listener.onContactClick(contactsDialog, contacts.get(getAdapterPosition()));
                 }
             });
         }

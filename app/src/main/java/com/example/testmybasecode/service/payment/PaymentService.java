@@ -6,6 +6,8 @@ import retrofit2.http.GET;
 import rx.Observable;
 
 public interface PaymentService {
+
+    //fake API
     @GET("sampleAPI")
     Observable<PaymentResponse> payment();
 }

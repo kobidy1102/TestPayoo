@@ -11,20 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
-
 import com.example.testmybasecode.R;
-import com.example.testmybasecode.domain.main.confirm.ConfirmActivity_;
-import com.example.testmybasecode.domain.main.payment.PaymentActivity;
-import com.example.testmybasecode.domain.main.payment.PaymentMethodAdapter;
 import com.example.testmybasecode.service.model.Contact;
-
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
+import java.util.Objects;
 
 @EFragment(R.layout.dialog_contacts)
 public class ContactsDialog extends DialogFragment {
@@ -34,10 +29,10 @@ public class ContactsDialog extends DialogFragment {
     @ViewById(R.id.dialog_contacts_rcv_contacts_list)
     protected RecyclerView rcvContactsList;
     public static ContactsDialog newInstance(List<Contact> contacts, ContactsDialogListener listener) {
-        ContactsDialog otpDialog = ContactsDialog_.builder().build();
-        otpDialog.setContactListener(listener);
-        otpDialog.contactList=contacts;
-        return otpDialog;
+        ContactsDialog contactsDialog = ContactsDialog_.builder().build();
+        contactsDialog.setContactListener(listener);
+        contactsDialog.contactList=contacts;
+        return contactsDialog;
     }
 
     @Override
@@ -50,20 +45,18 @@ public class ContactsDialog extends DialogFragment {
         if (getDialog().getWindow() != null) {
             getDialog().getWindow().setGravity(Gravity.CENTER);
         }
+
+        ContactsAdapter contactsAdapter = new ContactsAdapter(this, contactList,listener);
+        rcvContactsList.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcvContactsList.setLayoutManager(linearLayoutManager);
+        rcvContactsList.addItemDecoration(new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL));
+        rcvContactsList.setAdapter(contactsAdapter);
     }
 
-    @NonNull
     @Override
     public void onActivityCreated(Bundle arg0) {
         super.onActivityCreated(arg0);
-
-        ContactsAdapter contactsAdapter = new ContactsAdapter(getContext(),this, contactList,listener);
-                rcvContactsList.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rcvContactsList.setLayoutManager(linearLayoutManager);
-        rcvContactsList.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        rcvContactsList.setAdapter(contactsAdapter);
-
     }
 
     @NonNull
@@ -81,17 +74,14 @@ public class ContactsDialog extends DialogFragment {
 
     @Override
     public void onResume() {
-        // Get existing layout params for the window
         Window window = getDialog().getWindow();
         if (window != null) {
             WindowManager.LayoutParams params = window.getAttributes();
             params.dimAmount = 0.85f;
-            // Assign window properties to fill the parent
             params.width = WindowManager.LayoutParams.MATCH_PARENT;
             params.height = WindowManager.LayoutParams.WRAP_CONTENT;
             window.setAttributes(params);
         }
-        // Call super onResume after sizing
         super.onResume();
     }
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/item_value_tv_value"
+    android:id="@+id/item_payment_method_tv_payment_method"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_margin="10dp"
     android:background="@mipmap/bg_shadow_white"
     android:gravity="center"
-    android:textSize="15dp" />
+    android:textColor="@color/defaultColor"
+    android:textStyle="bold"
+    android:textSize="16dp" />

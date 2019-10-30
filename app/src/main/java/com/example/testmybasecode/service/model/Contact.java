@@ -1,8 +1,8 @@
 package com.example.testmybasecode.service.model;
 
 public class Contact {
-    String name;
-    String phoneNumber;
+    private String name;
+    private String phoneNumber;
 
     public Contact(String name, String phoneNumber) {
         this.name = name;
